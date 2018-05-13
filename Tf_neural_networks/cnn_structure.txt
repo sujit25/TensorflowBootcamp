@@ -1,0 +1,70 @@
+conv1
+
+input:
+x_image - num_images, 28,28,1
+w1 - 5,5,1,32
+strides - 1,1,1,1
+output:
+z1 - num_images,28,28,32
+------------------------------------
+
+relu 1
+
+input:
+z1 - num_images,28,28,32
+output:
+a1 - num_images,28,28,32
+-------------------------------------
+
+max_pool1
+
+input:
+num_images,28,28,32
+max pool window: 1,2,2,1
+strides - 1,2,2,1
+output: 
+p1 - num_images,14,14,32
+------------------------------------
+
+conv2
+
+input:
+p1 - num_images,14,14,32
+W2 - 5,5,32, 64
+strides - 1,1,1,1
+output:
+z2 -num_images,14,14,64
+--------------------
+
+relu 2
+
+input:
+z2 - num_images,14,14,64
+output:
+a2 - num_images,14,14,64
+
+------------------------
+
+max_pool2X2
+
+input:
+a2 - num_images,14,14,64
+output:
+max pool window: 1,2,2,1
+strides - 1,2,2,1
+p2 - num_images,7,7,64
+
+-------------------------
+flatout - num_images, 3136
+
+-------------------------
+fully connected layer
+
+--------------------------
+flatout - num_images, 3136
+hidden1- 3136, 10
+output - num_images, 10
+
+
+
+
